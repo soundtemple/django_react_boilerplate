@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import ArticleListView from "../src/demo_app/components/articleList";
+import ArticleListView from "../src/blog/components/articleList";
 
 function App() {
   return (

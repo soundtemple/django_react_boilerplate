@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from demo_app.models import Article
+from project_apps.blog.models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):

@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from demo_app.models import Article
+from project_apps.blog.models import Article
 from .serializers import ArticleSerializer
 
 
