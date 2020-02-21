@@ -6,7 +6,7 @@ const ArticleListView = props => {
 
   useEffect(() => {
     // empty array in callback ensures api call is only made once after state update
-    axios.get("http://localhost:8000/api/").then(resp => {
+    axios.get("http://localhost:9000/blog/").then(resp => {
       console.log(resp.data);
       setArticles(resp.data);
     });
