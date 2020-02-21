@@ -1,16 +1,29 @@
 import React from "react";
+import AppBody from "./app/components/app-body";
+import Dashboard from "./app/components/dashboard";
 import "./App.css";
-import ArticleListView from "../src/blog/components/articleList";
 
-function App() {
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
+
+const App = props => {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Soundtemple</h1>
-      </header>
-      <ArticleListView />
+      <MuiThemeProvider theme={theme}>
+        <div>
+          <CssBaseline />
+          <Dashboard />
+          <AppBody />
+        </div>
+      </MuiThemeProvider>
     </div>
   );
-}
+};
 
 export default App;
