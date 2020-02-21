@@ -7,8 +7,9 @@ from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('', home, name='home'),
-    path('api-auth/', include('rest_framework.urls')),
     path('blog/', include('project_apps.blog.urls')),
 ]
 
