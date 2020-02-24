@@ -14,14 +14,17 @@ import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PersonIcon from "@material-ui/icons/Person";
 import { menuItems } from "./menu-items";
 import Footer from "./footer";
 import ArticleListView from "../../blog/components/articleList";
 import SignIn from "../../auth/components/signin";
+import Register from "../../auth/components/register";
+import blueGrey from "@material-ui/core/colors/blueGrey";
 
 const drawerWidth = 240;
 
@@ -41,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundColor: blueGrey[700],
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -104,7 +108,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Dashboard() {
+const Dashboard = props => {
+  const { onFlash } = props;
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -149,6 +154,16 @@ export default function Dashboard() {
               <NotificationsIcon />
             </Badge>
           </IconButton>
+          <IconButton color="inherit">
+            <Badge color="secondary">
+              <PersonIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge color="secondary">
+              <ExitToAppIcon />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -178,7 +193,12 @@ export default function Dashboard() {
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                <SignIn />
+                <SignIn onFlash={onFlash} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Register onFlash={onFlash} />
               </Paper>
             </Grid>
           </Grid>
@@ -189,4 +209,6 @@ export default function Dashboard() {
       </main>
     </div>
   );
-}
+};
+
+export default Dashboard;

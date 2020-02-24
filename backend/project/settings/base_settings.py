@@ -20,8 +20,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+
+    # 3rd party package for user registration and authentication endpoints
     'djoser',
+
+    # Project apps
     'project_apps.blog',
+
+    # Other 3rd party packages
     'django_extensions',
     'tinymce',
 ]

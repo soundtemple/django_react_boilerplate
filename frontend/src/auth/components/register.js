@@ -7,7 +7,7 @@ import TextField from "../../utils/TextField";
 import Button from "@material-ui/core/Button";
 
 // Login form with Formik and Yup
-const SignUpSchema = yup.object().shape({
+const RegisterSchema = yup.object().shape({
   username: yup
     .string()
     // .email("Not a valid email")
@@ -19,33 +19,7 @@ const SignUpSchema = yup.object().shape({
     .max(8, "Must be <= 8 characters")
 });
 
-function handleLogout() {
-  const url = "http://localhost:9000/auth/token/logout/";
-  axios
-    .post(url)
-    .then(resp => {
-      console.log("LOGGED OUT");
-    })
-    .catch(error => {
-      console.log(`ERRORS: ${error}`);
-    });
-}
-
-function handleShowUser() {
-  const url = "http://localhost:9000/auth/users/me/";
-  axios
-    .get(url)
-    .then(resp => {
-      console.log(resp.data);
-      console.log(`USER: ${resp}`);
-    })
-    .catch(error => {
-      console.log(`ERRORS: ${error}`);
-    });
-}
-
-const SignIn = props => {
-  const { onFlash } = props;
+const Register = props => {
   return (
     <>
       <Formik
@@ -53,11 +27,11 @@ const SignIn = props => {
           username: "timwalter",
           password: "123"
         }}
-        validationSchema={SignUpSchema}
+        validationSchema={RegisterSchema}
         validateOnBlur={true}
         validateOnChange={true}
         onSubmit={(values, actions) => {
-          const url = "http://localhost:9000/auth/token/login/";
+          const url = "http://localhost:9000/auth/users/";
           axios
             .post(url, values)
             .then(resp => {
@@ -65,19 +39,10 @@ const SignIn = props => {
                 "Authorization"
               ] = `Token ${resp.data.auth_token}`;
               console.log(`LOGGED IN: token ${resp.data.auth_token}`);
-              window.location.reload();
             })
             .catch(error => {
               if (error.response && error.response.status === 400) {
-                let message = "There was an error processing your request";
-                if (error.response.data.non_field_errors) {
-                  message = error.response.data.non_field_errors;
-                }
-                onFlash({
-                  severity: "error",
-                  message: message
-                });
-                actions.setErrors({ username: message });
+                actions.setErrors(error.response.data);
               }
               actions.setSubmitting(false);
             });
@@ -90,20 +55,18 @@ const SignIn = props => {
         // TextField component extracts the repititive aspects of the formik Field Component
         ({ isValid, errors, touched }) => (
           <Form>
-            <h3>Sign in</h3>
+            <h3>Register</h3>
             <Field name="username" label="Username" component={TextField} />
             <Field name="password" label="Password" component={TextField} />
-            <Button disabled={!isValid} type="submit">
-              Sign in
+            <Button disabled={!isValid} type="submit" label="Register">
+              Register
             </Button>
             {/* <Debug /> */}
           </Form>
         )}
       </Formik>
-      <Button onClick={() => handleLogout()}>Logout</Button>
-      <Button onClick={() => handleShowUser()}>Show User</Button>
     </>
   );
 };
 
-export default SignIn;
+export default Register;
