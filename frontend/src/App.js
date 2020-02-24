@@ -1,5 +1,4 @@
 import React from "react";
-import AppBody from "./app/components/app-body";
 import Dashboard from "./app/components/dashboard";
 import "./App.css";
 
@@ -8,7 +7,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
   palette: {
-    type: "dark"
+    type: "light"
   }
 });
 
@@ -19,7 +18,6 @@ const App = props => {
         <div>
           <CssBaseline />
           <Dashboard />
-          <AppBody />
         </div>
       </MuiThemeProvider>
     </div>
