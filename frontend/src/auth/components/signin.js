@@ -24,6 +24,7 @@ function handleLogout() {
   axios
     .post(url)
     .then(resp => {
+      localStorage.removeItem("token");
       console.log("LOGGED OUT");
     })
     .catch(error => {
@@ -43,6 +44,10 @@ function handleShowUser() {
       console.log(`ERRORS: ${error}`);
     });
 }
+function handleForgotPassword() {
+  // route to forgot password form
+  console.log("Routing to forgot password form");
+}
 
 const SignIn = props => {
   const { onFlash } = props;
@@ -61,11 +66,9 @@ const SignIn = props => {
           axios
             .post(url, values)
             .then(resp => {
-              axios.defaults.headers.common[
-                "Authorization"
-              ] = `Token ${resp.data.auth_token}`;
+              localStorage.setItem("token", resp.data.auth_token);
               console.log(`LOGGED IN: token ${resp.data.auth_token}`);
-              window.location.reload();
+              // window.location.reload(); or redirect somewhere???
             })
             .catch(error => {
               if (error.response && error.response.status === 400) {
@@ -78,6 +81,11 @@ const SignIn = props => {
                   message: message
                 });
                 actions.setErrors({ username: message });
+              } else {
+                onFlash({
+                  severity: "error",
+                  message: "There was a problem processing your request"
+                });
               }
               actions.setSubmitting(false);
             });
@@ -101,6 +109,7 @@ const SignIn = props => {
         )}
       </Formik>
       <Button onClick={() => handleLogout()}>Logout</Button>
+      <Button onClick={() => handleForgotPassword()}>Forgot password</Button>
       <Button onClick={() => handleShowUser()}>Show User</Button>
     </>
   );

@@ -8,6 +8,13 @@ import axios from "axios";
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
+axios.interceptors.request.use(function(config) {
+  // add the authentication token to request if it exists
+  const token = localStorage.getItem("token");
+  config.headers.Authorization = token ? `Token ${token}` : "";
+  return config;
+});
+
 axios.interceptors.response.use(
   response => response,
   error => {
@@ -22,6 +29,7 @@ axios.interceptors.response.use(
         console.log("PERMISSIONS ERROR");
       }
     }
+    debugger;
     return Promise.reject(error);
   }
 );
