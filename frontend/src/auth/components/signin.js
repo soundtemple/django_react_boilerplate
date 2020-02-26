@@ -55,8 +55,8 @@ const SignIn = props => {
     <>
       <Formik
         initialValues={{
-          email: "tim@walter.com",
-          password: "123"
+          email: "",
+          password: ""
         }}
         validationSchema={SignInSchema}
         validateOnBlur={true}

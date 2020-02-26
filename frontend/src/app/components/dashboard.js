@@ -24,6 +24,7 @@ import Footer from "./footer";
 import ArticleListView from "../../blog/components/articleList";
 import SignIn from "../../auth/components/signin";
 import Register from "../../auth/components/register";
+import Activate from "../../auth/components/activate";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 
 const drawerWidth = 240;
@@ -205,6 +206,11 @@ const Dashboard = props => {
             <Grid item xs={12} md={6} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <Register onFlash={onFlash} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <Paper className={fixedHeightPaper}>
+                <Activate onFlash={onFlash} />
               </Paper>
             </Grid>
           </Grid>

@@ -17,7 +17,10 @@ const RegisterSchema = yup.object().shape({
     .string()
     .required("C'mon password is required")
     .min(3, "Must be > 3 characters")
-    .max(12, "Must be <= 12 characters")
+    .max(12, "Must be <= 12 characters"),
+  re_password: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
 });
 
 const Register = props => {
@@ -25,9 +28,10 @@ const Register = props => {
     <>
       <Formik
         initialValues={{
-          username: "soundtemple",
-          email: "twwalter@gmail.com",
-          password: "123"
+          username: "",
+          email: "",
+          password: "",
+          re_password: ""
         }}
         validationSchema={RegisterSchema}
         validateOnBlur={true}
@@ -37,7 +41,6 @@ const Register = props => {
           axios
             .post(url, values)
             .then(resp => {
-              debugger;
               console.log(`REGISTERED:${resp}`);
             })
             .catch(error => {
@@ -61,6 +64,12 @@ const Register = props => {
             <Field
               name="password"
               label="Password"
+              type="password"
+              component={TextField}
+            />
+            <Field
+              name="re_password"
+              label="Confirm password"
               type="password"
               component={TextField}
             />

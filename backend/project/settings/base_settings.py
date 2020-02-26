@@ -93,4 +93,5 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': True,
     'SERIALIZERS': {},
     'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
 }
