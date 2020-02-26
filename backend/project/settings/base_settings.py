@@ -26,6 +26,7 @@ INSTALLED_APPS = [
 
     # Project apps
     'project_apps.blog',
+    'project_apps.auth_user',
 
     # Other 3rd party packages
     'django_extensions',
@@ -48,7 +49,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
 }
-
+AUTH_USER_MODEL = 'auth_user.User'
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
@@ -85,3 +86,11 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
 ]
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+    'LOGIN_FIELD': 'email',
+}

@@ -7,16 +7,16 @@ import TextField from "../../utils/TextField";
 import Button from "@material-ui/core/Button";
 
 // Login form with Formik and Yup
-const SignUpSchema = yup.object().shape({
-  username: yup
+const SignInSchema = yup.object().shape({
+  email: yup
     .string()
-    // .email("Not a valid email")
-    .required("Username is required"),
+    .email("Not a valid email")
+    .required("Email is required"),
   password: yup
     .string()
     .required("C'mon password is required")
     .min(3, "Must be > 3 characters")
-    .max(8, "Must be <= 8 characters")
+    .max(12, "Must be <= 12 characters")
 });
 
 function handleLogout() {
@@ -55,10 +55,10 @@ const SignIn = props => {
     <>
       <Formik
         initialValues={{
-          username: "timwalter",
+          email: "tim@walter.com",
           password: "123"
         }}
-        validationSchema={SignUpSchema}
+        validationSchema={SignInSchema}
         validateOnBlur={true}
         validateOnChange={true}
         onSubmit={(values, actions) => {
@@ -80,7 +80,7 @@ const SignIn = props => {
                   severity: "error",
                   message: message
                 });
-                actions.setErrors({ username: message });
+                actions.setErrors({ email: message });
               } else {
                 onFlash({
                   severity: "error",
@@ -99,8 +99,13 @@ const SignIn = props => {
         ({ isValid, errors, touched }) => (
           <Form>
             <h3>Sign in</h3>
-            <Field name="username" label="Username" component={TextField} />
-            <Field name="password" label="Password" component={TextField} />
+            <Field name="email" label="Email" component={TextField} />
+            <Field
+              name="password"
+              label="Password"
+              type="password"
+              component={TextField}
+            />
             <Button disabled={!isValid} type="submit">
               Sign in
             </Button>

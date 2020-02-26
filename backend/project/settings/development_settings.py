@@ -7,6 +7,8 @@ INSTALLED_APPS += [
     'debug_toolbar',
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
 MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
@@ -14,7 +16,7 @@ MIDDLEWARE += [
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        "NAME": os.path.join(BASE_DIR, 'project_db.sqlite3')
     }
 }
 

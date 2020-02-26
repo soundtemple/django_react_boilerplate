@@ -104,14 +104,17 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column"
   },
   fixedHeight: {
-    height: 320
+    height: 380
+  },
+  articlesHeight: {
+    height: 300
   }
 }));
 
 const Dashboard = props => {
   const { onFlash } = props;
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -119,6 +122,7 @@ const Dashboard = props => {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  const fixedHeightArticles = clsx(classes.paper, classes.articlesHeight);
 
   return (
     <div className={classes.root}>
@@ -186,17 +190,19 @@ const Dashboard = props => {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
+            <Grid item xs={12} md={12} lg={9}>
+              <Paper className={fixedHeightArticles}>
                 <ArticleListView />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
+          </Grid>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <SignIn onFlash={onFlash} />
               </Paper>
             </Grid>
-            <Grid item xs={12} md={4} lg={3}>
+            <Grid item xs={12} md={6} lg={4}>
               <Paper className={fixedHeightPaper}>
                 <Register onFlash={onFlash} />
               </Paper>

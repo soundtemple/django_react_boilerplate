@@ -14,7 +14,7 @@ class Article(models.Model):
     subtitle = models.CharField(max_length=255, null=True, blank=True)
     body = HTMLField()
     published = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='articles',)
+    author = models.ForeignKey('auth_user.User', on_delete=models.CASCADE, related_name='articles',)
     tags = models.ManyToManyField(Tag, verbose_name='Tags')
     featured = models.BooleanField(default=False)
 

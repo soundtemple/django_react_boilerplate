@@ -29,7 +29,6 @@ axios.interceptors.response.use(
         console.log("PERMISSIONS ERROR");
       }
     }
-    debugger;
     return Promise.reject(error);
   }
 );

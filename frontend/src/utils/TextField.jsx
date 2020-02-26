@@ -19,6 +19,7 @@ const TextField = ({
       <UITextField
         margin="normal"
         helperText=""
+        fullWidth
         error={errorsExist}
         name={props.name}
         label={props.label}

@@ -8,15 +8,16 @@ import Button from "@material-ui/core/Button";
 
 // Login form with Formik and Yup
 const RegisterSchema = yup.object().shape({
-  username: yup
+  username: yup.string().required("Username is required"),
+  email: yup
     .string()
-    // .email("Not a valid email")
-    .required("Username is required"),
+    .email("Not a valid email")
+    .required("Email is required"),
   password: yup
     .string()
     .required("C'mon password is required")
     .min(3, "Must be > 3 characters")
-    .max(8, "Must be <= 8 characters")
+    .max(12, "Must be <= 12 characters")
 });
 
 const Register = props => {
@@ -24,7 +25,8 @@ const Register = props => {
     <>
       <Formik
         initialValues={{
-          username: "timwalter",
+          username: "soundtemple",
+          email: "twwalter@gmail.com",
           password: "123"
         }}
         validationSchema={RegisterSchema}
@@ -35,10 +37,8 @@ const Register = props => {
           axios
             .post(url, values)
             .then(resp => {
-              axios.defaults.headers.common[
-                "Authorization"
-              ] = `Token ${resp.data.auth_token}`;
-              console.log(`LOGGED IN: token ${resp.data.auth_token}`);
+              debugger;
+              console.log(`REGISTERED:${resp}`);
             })
             .catch(error => {
               if (error.response && error.response.status === 400) {
@@ -57,7 +57,13 @@ const Register = props => {
           <Form>
             <h3>Register</h3>
             <Field name="username" label="Username" component={TextField} />
-            <Field name="password" label="Password" component={TextField} />
+            <Field name="email" label="Email" component={TextField} />
+            <Field
+              name="password"
+              label="Password"
+              type="password"
+              component={TextField}
+            />
             <Button disabled={!isValid} type="submit" label="Register">
               Register
             </Button>
