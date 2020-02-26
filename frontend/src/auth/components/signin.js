@@ -2,7 +2,6 @@ import React from "react";
 import axios from "../../utils/axios-wrapper";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup"; // for everything
-import { Debug } from "../../utils/Debug";
 import TextField from "../../utils/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -105,6 +104,7 @@ const SignIn = props => {
               label="Password"
               type="password"
               component={TextField}
+              autoComplete="off"
             />
             <Button disabled={!isValid} type="submit">
               Sign in

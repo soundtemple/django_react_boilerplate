@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "../../utils/axios-wrapper";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import Button from "@material-ui/core/Button";
 
 const Activate = props => {
