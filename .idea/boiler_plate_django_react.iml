@@ -13,9 +13,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$/backend/project" />
-    <content url="file://$MODULE_DIR$/backend/project_apps" />
-    <content url="file://$MODULE_DIR$/frontend" />
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
