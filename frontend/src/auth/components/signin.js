@@ -39,7 +39,8 @@ const SignIn = (props) => {
       .get(url)
       .then((resp) => {
         console.log(resp.data);
-        console.log(`USER: ${resp}`);
+        console.log(`USER: ${resp.data.username}`);
+        console.log(`USER: ${resp.data.email}`);
       })
       .catch((error) => {
         console.log(`ERRORS: ${error}`);
