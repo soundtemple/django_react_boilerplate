@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -19,13 +19,20 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonIcon from "@material-ui/icons/Person";
-import { menuItems } from "./menu-items";
+import { MenuItems } from "./menu-items";
 import Footer from "./footer";
 import ArticleListView from "../../blog/components/articleList";
+import PortfolioListView from "../../portfolio/components/portfolioList";
+import ProductListView from "../../store/components/productList";
+import ShoppingCart from "../../store/components/cart";
+import ContactForm from "../../general/components/contact";
+import HomePage from "../../general/components/home";
 import SignIn from "../../auth/components/signin";
+import Logout from "../../auth/components/logout";
 import Register from "../../auth/components/register";
 import Activate from "../../auth/components/activate";
 import blueGrey from "@material-ui/core/colors/blueGrey";
+import Notifications from "../../general/components/notifications";
 
 const drawerWidth = 240;
 
@@ -124,6 +131,12 @@ const Dashboard = (props) => {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const fixedHeightArticles = clsx(classes.paper, classes.articlesHeight);
+  const [currentMenu, setCurrentMenu] = useState("home");
+
+  const handleMenuChange = (selection) => {
+    console.log("TIME FOR A MENU CHANGE", selection);
+    setCurrentMenu(selection);
+  };
 
   return (
     <div className={classes.root}>
@@ -154,17 +167,26 @@ const Dashboard = (props) => {
           >
             Soundtemple
           </Typography>
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            onClick={() => handleMenuChange("notifications")}
+          >
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            onClick={() => handleMenuChange("account")}
+          >
             <Badge color="secondary">
               <PersonIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            onClick={() => handleMenuChange("logout")}
+          >
             <Badge color="secondary">
               <ExitToAppIcon />
             </Badge>
@@ -184,36 +206,105 @@ const Dashboard = (props) => {
           </IconButton>
         </div>
         <Divider />
-        <List>{menuItems}</List>
+        <List>
+          <MenuItems onMenuChange={handleMenuChange} />
+        </List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={12} lg={9}>
-              <Paper className={fixedHeightArticles}>
-                <ArticleListView />
-              </Paper>
+          {currentMenu === "home" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <HomePage />
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={4}>
-              <Paper className={fixedHeightPaper}>
-                <SignIn onFlash={onFlash} />
-              </Paper>
+          )}
+          {currentMenu === "news" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <ArticleListView />
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Paper className={fixedHeightPaper}>
-                <Register onFlash={onFlash} />
-              </Paper>
+          )}
+          {currentMenu === "portfolio" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <PortfolioListView />
+                </Paper>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <Paper className={fixedHeightPaper}>
-                <Activate onFlash={onFlash} />
-              </Paper>
+          )}
+          {currentMenu === "store" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <ProductListView />
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+          )}
+          {currentMenu === "cart" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <ShoppingCart />
+                </Paper>
+              </Grid>
+            </Grid>
+          )}
+          {currentMenu === "account" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={6} lg={4}>
+                <Paper className={fixedHeightPaper}>
+                  <SignIn onFlash={onFlash} />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <Paper className={fixedHeightPaper}>
+                  <Register onFlash={onFlash} />
+                </Paper>
+              </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <Paper className={fixedHeightPaper}>
+                  <Activate onFlash={onFlash} />
+                </Paper>
+              </Grid>
+            </Grid>
+          )}
+          {currentMenu === "contact" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <ContactForm />
+                </Paper>
+              </Grid>
+            </Grid>
+          )}
+          {currentMenu === "notifications" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <Notifications />
+                </Paper>
+              </Grid>
+            </Grid>
+          )}
+          {currentMenu === "logout" && (
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={fixedHeightArticles}>
+                  <Logout />
+                </Paper>
+              </Grid>
+            </Grid>
+          )}
           <Box pt={4}>
             <Footer />
           </Box>
