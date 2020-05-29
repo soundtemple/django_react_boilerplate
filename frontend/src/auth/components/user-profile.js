@@ -4,9 +4,36 @@ import { Formik, Form } from "formik";
 import Button from "@material-ui/core/Button";
 import AppContext from "../../app/components/app-context";
 
-const Activate = (props) => {
+const UserProfile = (props) => {
   const { onFlash } = props;
-  const { user } = React.useContext(AppContext);
+  const { user, updateUser } = React.useContext(AppContext);
+  function handleLogout() {
+    const url = "http://localhost:9000/auth/token/logout/";
+    axios
+      .post(url)
+      .then((resp) => {
+        localStorage.removeItem("token");
+        updateUser();
+        console.log("LOGGED OUT");
+      })
+      .catch((error) => {
+        console.log(`ERRORS: ${error}`);
+      });
+  }
+
+  function handleShowUser() {
+    const url = "http://localhost:9000/auth/users/me/";
+    axios
+      .get(url)
+      .then((resp) => {
+        console.log(resp.data);
+        console.log(`USER: ${resp.data.username}`);
+        console.log(`USER: ${resp.data.email}`);
+      })
+      .catch((error) => {
+        console.log(`ERRORS: ${error}`);
+      });
+  }
   return (
     <>
       <Formik
@@ -47,6 +74,8 @@ const Activate = (props) => {
               <p>Email: {user.email}</p>
               <p>Token: {localStorage.token}</p>
               <h3>Activate</h3>
+              <Button onClick={() => handleLogout()}>Logout</Button>
+              <Button onClick={() => handleShowUser()}>Show User</Button>
               <Button disabled={!isValid} type="submit" label="Activate">
                 Activate
               </Button>
@@ -59,4 +88,4 @@ const Activate = (props) => {
   );
 };
 
-export default Activate;
+export default UserProfile;

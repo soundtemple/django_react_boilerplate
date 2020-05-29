@@ -28,10 +28,7 @@ import ProductListView from "../../store/components/productList";
 import ShoppingCart from "../../store/components/cart";
 import ContactForm from "../../general/components/contact";
 import HomePage from "../../general/components/home";
-import SignIn from "../../auth/components/signin";
-import Logout from "../../auth/components/logout";
-import Register from "../../auth/components/register";
-import Activate from "../../auth/components/activate";
+import UserAccount from "../../auth/components/user-account";
 import blueGrey from "@material-ui/core/colors/blueGrey";
 import Notifications from "../../general/components/notifications";
 
@@ -258,20 +255,8 @@ const Dashboard = (props) => {
           )}
           {currentMenu === "account" && (
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6} lg={4}>
-                <Paper className={fixedHeightPaper}>
-                  <SignIn onFlash={onFlash} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6} lg={4}>
-                <Paper className={fixedHeightPaper}>
-                  <Register onFlash={onFlash} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={6} lg={4}>
-                <Paper className={fixedHeightPaper}>
-                  <Activate onFlash={onFlash} />
-                </Paper>
+              <Grid item xs={12}>
+                <UserAccount onFlash={onFlash} />
               </Grid>
             </Grid>
           )}
@@ -289,15 +274,6 @@ const Dashboard = (props) => {
               <Grid item xs={12}>
                 <Paper className={fixedHeightArticles}>
                   <Notifications />
-                </Paper>
-              </Grid>
-            </Grid>
-          )}
-          {currentMenu === "logout" && (
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Paper className={fixedHeightArticles}>
-                  <Logout />
                 </Paper>
               </Grid>
             </Grid>

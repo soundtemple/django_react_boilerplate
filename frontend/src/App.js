@@ -22,6 +22,12 @@ const App = (props) => {
     setFlashContent(flashContent);
     setShowFlash(true);
   };
+  useEffect(() => {
+    if (localStorage.token && !appState.user.username) {
+      console.log("getting some user info....");
+      updateUser(localStorage.token);
+    }
+  });
   const updateUser = (token) => {
     if (token) {
       const url = "http://localhost:9000/auth/users/me/";
@@ -36,6 +42,15 @@ const App = (props) => {
         .catch((error) => {
           console.log(`ERRORS: ${error}`);
         });
+    } else {
+      setAppState((appState) => ({
+        ...appState,
+        user: {
+          name: "",
+          email: "",
+          username: "",
+        },
+      }));
     }
   };
   const handleMenuChange = (menu) => {

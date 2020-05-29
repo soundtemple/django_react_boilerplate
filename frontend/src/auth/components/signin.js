@@ -19,36 +19,8 @@ const SignInSchema = yup.object().shape({
 const SignIn = (props) => {
   const { onFlash } = props;
   const [loggedIn, setLoggedIn] = useState(localStorage["token"]);
-  const { handleMenuChange, updateUser } = React.useContext(AppContext);
+  const { updateUser } = React.useContext(AppContext);
 
-  function handleLogout() {
-    const url = "http://localhost:9000/auth/token/logout/";
-    axios
-      .post(url)
-      .then((resp) => {
-        localStorage.removeItem("token");
-        console.log("LOGGED OUT");
-        handleMenuChange("logout");
-        setLoggedIn(false);
-      })
-      .catch((error) => {
-        console.log(`ERRORS: ${error}`);
-      });
-  }
-
-  function handleShowUser() {
-    const url = "http://localhost:9000/auth/users/me/";
-    axios
-      .get(url)
-      .then((resp) => {
-        console.log(resp.data);
-        console.log(`USER: ${resp.data.username}`);
-        console.log(`USER: ${resp.data.email}`);
-      })
-      .catch((error) => {
-        console.log(`ERRORS: ${error}`);
-      });
-  }
   function handleForgotPassword() {
     // route to forgot password form
     console.log("Routing to forgot password form");
@@ -126,11 +98,7 @@ const SignIn = (props) => {
           )
         }
       </Formik>
-      {loggedIn && <Button onClick={() => handleLogout()}>Logout</Button>}
-      {!loggedIn && (
-        <Button onClick={() => handleForgotPassword()}>Forgot password</Button>
-      )}
-      {loggedIn && <Button onClick={() => handleShowUser()}>Show User</Button>}
+      <Button onClick={() => handleForgotPassword()}>Forgot password</Button>
     </>
   );
 };
