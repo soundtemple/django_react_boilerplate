@@ -14,12 +14,12 @@ const ArticleListView = (props) => {
   return (
     <>
       <h2>Soundtemple news</h2>
-      {/* {articles.map((article, index) => (
+      {articles.map((article, index) => (
         <div key={index}>
           <h4>{article.title}</h4>
           <p>{article.content}</p>
         </div>
-      ))} */}
+      ))}
     </>
   );
 };

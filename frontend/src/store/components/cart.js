@@ -4,12 +4,12 @@ import axios from "axios";
 const ShoppingCart = (props) => {
   const [productsInCart, setProductsInCart] = useState([]);
 
-  useEffect(() => {
-    // empty array in callback ensures api call is only made once after state update
-    axios.get("http://localhost:9000/cart/").then((resp) => {
-      setProductsInCart(resp.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   // empty array in callback ensures api call is only made once after state update
+  //   axios.get("http://localhost:9000/cart/").then((resp) => {
+  //     setProductsInCart(resp.data);
+  //   });
+  // }, []);
 
   return (
     <>

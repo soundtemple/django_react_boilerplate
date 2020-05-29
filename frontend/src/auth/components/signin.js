@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AppContext from "../../app/components/app-context";
 import axios from "../../utils/axios-wrapper";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup"; // for everything
@@ -18,6 +19,7 @@ const SignInSchema = yup.object().shape({
 const SignIn = (props) => {
   const { onFlash } = props;
   const [loggedIn, setLoggedIn] = useState(localStorage["token"]);
+  const { handleMenuChange, updateUser } = React.useContext(AppContext);
 
   function handleLogout() {
     const url = "http://localhost:9000/auth/token/logout/";
@@ -26,6 +28,7 @@ const SignIn = (props) => {
       .then((resp) => {
         localStorage.removeItem("token");
         console.log("LOGGED OUT");
+        handleMenuChange("logout");
         setLoggedIn(false);
       })
       .catch((error) => {
@@ -67,7 +70,8 @@ const SignIn = (props) => {
             .post(url, values)
             .then((resp) => {
               localStorage.setItem("token", resp.data.auth_token);
-              console.log(`LOGGED IN: token ${resp.data.auth_token}`);
+              console.log(`LOGGED IN: resp ${resp.data}`);
+              updateUser(resp.data);
               setLoggedIn(resp.data.auth_token);
               // window.location.reload(); or redirect somewhere???
             })
@@ -101,19 +105,21 @@ const SignIn = (props) => {
           // TextField component extracts the repititive aspects of the formik Field Component
           ({ isValid, errors, touched }) => (
             <Form>
-              <h3>Sign in</h3>
-              <Field name="email" label="Email" component={TextField} />
-              <Field
-                name="password"
-                label="Password"
-                type="password"
-                component={TextField}
-                autoComplete="off"
-              />
               {!loggedIn && (
-                <Button disabled={!isValid} type="submit">
-                  Sign in
-                </Button>
+                <>
+                  <h3>Sign in</h3>
+                  <Field name="email" label="Email" component={TextField} />
+                  <Field
+                    name="password"
+                    label="Password"
+                    type="password"
+                    component={TextField}
+                    autoComplete="off"
+                  />
+                  <Button disabled={!isValid} type="submit">
+                    Sign in
+                  </Button>
+                </>
               )}
               {/* <Debug /> */}
             </Form>

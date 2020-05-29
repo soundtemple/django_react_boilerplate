@@ -4,12 +4,12 @@ import axios from "axios";
 const PortfolioListView = (props) => {
   const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    // empty array in callback ensures api call is only made once after state update
-    axios.get("http://localhost:9000/portfolio/").then((resp) => {
-      setItems(resp.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   // empty array in callback ensures api call is only made once after state update
+  //   axios.get("http://localhost:9000/portfolio/").then((resp) => {
+  //     setItems(resp.data);
+  //   });
+  // }, []);
 
   return (
     <>

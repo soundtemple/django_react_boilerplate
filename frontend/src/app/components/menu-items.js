@@ -11,47 +11,49 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
 import AssignmentIcon from "@material-ui/icons/Assignment";
+import AppContext from "../../app/components/app-context";
 
 export const MenuItems = (props) => {
+  const { handleMenuChange } = React.useContext(AppContext);
   return (
     <div>
-      <ListItem button onClick={() => props.onMenuChange("home")}>
+      <ListItem button onClick={() => handleMenuChange("home")}>
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
         <ListItemText primary="Soundtemple" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("news")}>
+      <ListItem button onClick={() => handleMenuChange("news")}>
         <ListItemIcon>
           <BallotIcon />
         </ListItemIcon>
         <ListItemText primary="News" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("portfolio")}>
+      <ListItem button onClick={() => handleMenuChange("portfolio")}>
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
         <ListItemText primary="Music" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("store")}>
+      <ListItem button onClick={() => handleMenuChange("store")}>
         <ListItemIcon>
           <LayersIcon />
         </ListItemIcon>
         <ListItemText primary="Software" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("account")}>
+      <ListItem button onClick={() => handleMenuChange("account")}>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
         <ListItemText primary="Account" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("cart")}>
+      <ListItem button onClick={() => handleMenuChange("cart")}>
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
         <ListItemText primary="Cart" />
       </ListItem>
-      <ListItem button onClick={() => props.onMenuChange("contact")}>
+      <ListItem button onClick={() => handleMenuChange("contact")}>
         <ListItemIcon>
           <ContactMailIcon />
         </ListItemIcon>

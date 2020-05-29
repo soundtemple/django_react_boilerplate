@@ -2,50 +2,58 @@ import React from "react";
 import axios from "../../utils/axios-wrapper";
 import { Formik, Form } from "formik";
 import Button from "@material-ui/core/Button";
+import AppContext from "../../app/components/app-context";
 
-const Activate = props => {
+const Activate = (props) => {
   const { onFlash } = props;
+  const { user } = React.useContext(AppContext);
   return (
     <>
       <Formik
         initialValues={{
           uid: "",
-          token: ""
+          token: "",
         }}
         onSubmit={(values, actions) => {
           const url = "http://localhost:9000/auth/users/activation/";
           axios
             .post(url, values)
-            .then(resp => {
+            .then((resp) => {
               console.log(`ACTIVATED:${resp}`);
               onFlash({
                 severity: "success",
-                message: "Activation complete! Login with your user details."
+                message: "Activation complete! Login with your user details.",
               });
             })
-            .catch(error => {
+            .catch((error) => {
               onFlash({
                 severity: "error",
-                message: "There was an error processing your request"
+                message: "There was an error processing your request",
               });
               actions.setSubmitting(false);
             });
         }}
       >
-        {// these goodies are passed in a Formik component:
-        //  - values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting
-        // we can add to an input field manually like onChange={handleBlur}
-        // in a Formik Field they are passed already in the formik object  like my input component
-        // TextField component extracts the repititive aspects of the formik Field Component
-        ({ isValid, errors, touched }) => (
-          <Form>
-            <h3>Activate</h3>
-            <Button disabled={!isValid} type="submit" label="Activate">
-              Activate
-            </Button>
-            {/* <Debug /> */}
-          </Form>
-        )}
+        {
+          // these goodies are passed in a Formik component:
+          //  - values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting
+          // we can add to an input field manually like onChange={handleBlur}
+          // in a Formik Field they are passed already in the formik object  like my input component
+          // TextField component extracts the repititive aspects of the formik Field Component
+          ({ isValid, errors, touched }) => (
+            <Form>
+              <h3>User profile</h3>
+              <p>Username: {user.username}</p>
+              <p>Email: {user.email}</p>
+              <p>Token: {localStorage.token}</p>
+              <h3>Activate</h3>
+              <Button disabled={!isValid} type="submit" label="Activate">
+                Activate
+              </Button>
+              {/* <Debug /> */}
+            </Form>
+          )
+        }
       </Formik>
     </>
   );

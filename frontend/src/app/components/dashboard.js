@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
+import AppContext from "../../app/components/app-context";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
@@ -131,12 +132,8 @@ const Dashboard = (props) => {
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const fixedHeightArticles = clsx(classes.paper, classes.articlesHeight);
-  const [currentMenu, setCurrentMenu] = useState("home");
 
-  const handleMenuChange = (selection) => {
-    console.log("TIME FOR A MENU CHANGE", selection);
-    setCurrentMenu(selection);
-  };
+  const { currentMenu, handleMenuChange } = React.useContext(AppContext);
 
   return (
     <div className={classes.root}>
