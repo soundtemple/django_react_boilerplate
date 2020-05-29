@@ -177,14 +177,6 @@ const Dashboard = (props) => {
               <PersonIcon />
             </Badge>
           </IconButton>
-          <IconButton
-            color="inherit"
-            onClick={() => handleMenuChange("logout")}
-          >
-            <Badge color="secondary">
-              <ExitToAppIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
