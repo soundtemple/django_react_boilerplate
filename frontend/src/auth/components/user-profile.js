@@ -69,7 +69,7 @@ const UserProfile = (props) => {
           // TextField component extracts the repititive aspects of the formik Field Component
           ({ isValid, errors, touched }) => (
             <Form>
-              <h3>User profile</h3>
+              <h3>Profile</h3>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
               <p>Token: {localStorage.token}</p>

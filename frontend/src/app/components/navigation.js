@@ -3,10 +3,10 @@ import clsx from "clsx";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "./toolbar";
-import List from "@material-ui/core/List";
+import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { MenuItems } from "./menu-items";
+import { MenuItemsMain, MenuItemsSecondary } from "./menu-items";
 import IconButton from "@material-ui/core/IconButton";
 
 const Navigation = (props) => {
@@ -19,8 +19,6 @@ const Navigation = (props) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  const fixedHeightArticles = clsx(classes.paper, classes.articlesHeight);
 
   return (
     <>
@@ -48,9 +46,11 @@ const Navigation = (props) => {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          <MenuItems />
-        </List>
+        <Paper elevation={0}>
+          <MenuItemsMain />
+          <Divider />
+          <MenuItemsSecondary />
+        </Paper>
         <Divider />
       </Drawer>
     </>

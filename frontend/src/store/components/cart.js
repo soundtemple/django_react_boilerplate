@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import AppContext from "../../app/components/app-context";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const ShoppingCart = (props) => {
-  const [productsInCart, setProductsInCart] = useState([]);
-
-  // useEffect(() => {
-  //   // empty array in callback ensures api call is only made once after state update
-  //   axios.get("http://localhost:9000/cart/").then((resp) => {
-  //     setProductsInCart(resp.data);
-  //   });
-  // }, []);
-
+  const { fixedHeightPaper } = React.useContext(AppContext);
   return (
-    <>
-      <h2>Cart</h2>
-      {/* {productsInCart.map((product, index) => (
-        <div key={index}>
-          <h4>{product.title}</h4>
-          <p>{product.detail}</p>
-        </div>
-      ))} */}
-    </>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <h2>Cart</h2>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

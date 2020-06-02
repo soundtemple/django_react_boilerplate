@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import AppContext from "../../app/components/app-context";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const CollectionListView = (props) => {
-  const [items, setItems] = useState([]);
-
-  // useEffect(() => {
-  //   // empty array in callback ensures api call is only made once after state update
-  //   axios.get("http://localhost:9000/portfolio/").then((resp) => {
-  //     setItems(resp.data);
-  //   });
-  // }, []);
-
+  const { fixedHeightPaper } = React.useContext(AppContext);
   return (
-    <>
-      <h2>Collection List</h2>
-      {/* {items.map((item, index) => (
-        <div key={index}>
-          <h4>{item.title}</h4>
-          <p>{item.detail}</p>
-        </div>
-      ))} */}
-    </>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Paper className={fixedHeightPaper}>
+          <h2>"COLLECTION NAME"</h2>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 

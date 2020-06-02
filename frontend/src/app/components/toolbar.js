@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 const ToolBar = (props) => {
   const { classes, onDrawerOpen, drawState } = props;
+  // const { updateUser } = React.useContext(AppContext);
   return (
     <Toolbar className={classes.toolbar}>
       <IconButton
@@ -43,9 +44,7 @@ const ToolBar = (props) => {
       </Link>
       <IconButton color="inherit">
         <Link to="/account">
-          <Badge color="secondary">
-            <PersonIcon />
-          </Badge>
+          <PersonIcon />
         </Link>
       </IconButton>
     </Toolbar>
