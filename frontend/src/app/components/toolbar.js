@@ -7,6 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
 
 const ToolBar = (props) => {
   const { classes, onDrawerOpen, drawState } = props;
@@ -31,17 +32,21 @@ const ToolBar = (props) => {
         noWrap
         className={classes.title}
       >
-        Soundtemple
+        SOUNDTEMPLE
       </Typography>
+      <Link to="/notifications">
+        <IconButton color="inherit">
+          <Badge badgeContent={4} color="secondary">
+            <NotificationsIcon />
+          </Badge>
+        </IconButton>
+      </Link>
       <IconButton color="inherit">
-        <Badge badgeContent={4} color="secondary">
-          <NotificationsIcon />
-        </Badge>
-      </IconButton>
-      <IconButton color="inherit">
-        <Badge color="secondary">
-          <PersonIcon />
-        </Badge>
+        <Link to="/account">
+          <Badge color="secondary">
+            <PersonIcon />
+          </Badge>
+        </Link>
       </IconButton>
     </Toolbar>
   );

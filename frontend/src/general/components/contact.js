@@ -7,7 +7,7 @@ const ContactForm = (props) => {
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Paper>
-          <h2>Contact Soundtemple</h2>
+          <h2>Get in touch!</h2>
         </Paper>
       </Grid>
     </Grid>
