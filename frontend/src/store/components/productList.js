@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// A list of all products across all collections
+
 const ProductListView = (props) => {
   const [products, setProducts] = useState([]);
 
@@ -13,7 +15,7 @@ const ProductListView = (props) => {
 
   return (
     <>
-      <h2>Soundtemple software</h2>
+      <h2>Soundtemple products</h2>
       {products.map((product, index) => (
         <div key={index}>
           <h4>{product.title}</h4>

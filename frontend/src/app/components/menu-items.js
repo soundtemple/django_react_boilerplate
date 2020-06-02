@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -17,47 +18,61 @@ export const MenuItems = (props) => {
   const { handleMenuChange } = React.useContext(AppContext);
   return (
     <div>
-      <ListItem button onClick={() => handleMenuChange("home")}>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Soundtemple" />
+      <ListItem>
+        <Link to="/news">
+          <ListItemIcon>
+            <DashboardIcon />
+            <ListItemText primary="Soundtemple" />
+          </ListItemIcon>
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("news")}>
-        <ListItemIcon>
-          <BallotIcon />
-        </ListItemIcon>
-        <ListItemText primary="News" />
+      <ListItem>
+        <Link to="/news">
+          <ListItemIcon>
+            <BallotIcon />
+          </ListItemIcon>
+          <ListItemText primary="News" />
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("portfolio")}>
-        <ListItemIcon>
-          <BarChartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Music" />
+      <ListItem>
+        <Link to="/music">
+          <ListItemIcon>
+            <BarChartIcon />
+            <ListItemText primary="Music" />
+          </ListItemIcon>
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("store")}>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Software" />
+      <ListItem>
+        <Link to="/software">
+          <ListItemIcon>
+            <LayersIcon />
+          </ListItemIcon>
+          <ListItemText primary="Software" />
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("account")}>
-        <ListItemIcon>
-          <PeopleIcon />
-        </ListItemIcon>
-        <ListItemText primary="Account" />
+      <ListItem>
+        <Link to="/account">
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Account" />
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("cart")}>
-        <ListItemIcon>
-          <ShoppingCartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Cart" />
+      <ListItem>
+        <Link to="/cart">
+          <ListItemIcon>
+            <ShoppingCartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Cart" />
+        </Link>
       </ListItem>
-      <ListItem button onClick={() => handleMenuChange("contact")}>
-        <ListItemIcon>
-          <ContactMailIcon />
-        </ListItemIcon>
-        <ListItemText primary="Contact" />
+      <ListItem>
+        <Link to="/contact">
+          <ListItemIcon>
+            <ContactMailIcon />
+          </ListItemIcon>
+          <ListItemText primary="Contact" />
+        </Link>
       </ListItem>
     </div>
   );

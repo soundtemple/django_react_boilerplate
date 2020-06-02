@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const PortfolioListView = (props) => {
+const CollectionListView = (props) => {
   const [items, setItems] = useState([]);
 
   // useEffect(() => {
@@ -13,7 +13,7 @@ const PortfolioListView = (props) => {
 
   return (
     <>
-      <h2>Music</h2>
+      <h2>Collection List</h2>
       {/* {items.map((item, index) => (
         <div key={index}>
           <h4>{item.title}</h4>
@@ -24,4 +24,4 @@ const PortfolioListView = (props) => {
   );
 };
 
-export default PortfolioListView;
+export default CollectionListView;
