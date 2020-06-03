@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import AppContext from "../../app/components/app-context";
 
 const ArticleListView = (props) => {
   const [articles, setArticles] = useState([]);
-  const { fixedHeightPaper } = React.useContext(AppContext);
 
   useEffect(() => {
     // empty array in callback ensures api call is only made once after state update

@@ -7,6 +7,7 @@ import ArticleListView from "../../blog/components/articleList";
 import PortfolioListView from "../../collections/components/collectionList";
 import ShoppingCart from "../../store/components/cart";
 import ContactForm from "../../general/components/contact";
+import RoutNoteFound from "../../general/components/route-not-found";
 import ProductListView from "../../store/components/productList";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -29,7 +30,7 @@ const AppRouter = (props) => {
               <Route path="/account" component={UserAccount} />
               <Route path="/notifications" component={Notifications} />
               <Route path="/contact" component={ContactForm} />
-              <Route component={Error} />
+              <Route component={RoutNoteFound} />
             </Switch>
           </Paper>
         </Grid>
