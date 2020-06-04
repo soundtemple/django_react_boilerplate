@@ -19,8 +19,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # 3rd party package for user registration and authentication endpoints
+    'djoser',
+
+    # Project apps
     'project_apps.blog',
+    'project_apps.auth_user',
+
+    # Other 3rd party packages
     'django_extensions',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
@@ -35,13 +45,11 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
 }
-
+AUTH_USER_MODEL = 'auth_user.User'
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
@@ -78,3 +86,12 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
 ]
+DJOSER = {
+    'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
+    'USERNAME_RESET_CONFIRM_URL': '#/username/reset/confirm/{uid}/{token}',
+    'ACTIVATION_URL': '#/activate/{uid}/{token}',
+    'SEND_ACTIVATION_EMAIL': True,
+    'SERIALIZERS': {},
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+}
