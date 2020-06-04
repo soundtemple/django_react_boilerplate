@@ -1,8 +1,8 @@
 import React from "react";
 import { ListItemLink } from "../theme/list-item-link";
 import List from "@material-ui/core/List";
-import AppContext from "../../app/components/app-context";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import { theme } from "../../app/theme/theme-utils";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PersonIcon from "@material-ui/icons/Person";
 import BallotIcon from "@material-ui/icons/Ballot";
@@ -29,7 +29,12 @@ export const MenuItemsMain = (props) => {
 };
 
 export const MenuItemsSecondary = (props) => {
-  const { themeChange } = React.useContext(AppContext);
+  const themeChange = () => {
+    theme.palette.type === "light"
+      ? (window.localStorage["stThemeStyle"] = "dark")
+      : (window.localStorage["stThemeStyle"] = "light");
+    window.location.reload();
+  };
   return (
     <List aria-label="secondary">
       <button onClick={() => themeChange()}>theme</button>

@@ -9,7 +9,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 export const theme = createMuiTheme({
   palette: {
-    type: "dark",
+    type: window.localStorage["stThemeStyle"]
+      ? window.localStorage["stThemeStyle"]
+      : "light",
     primary: grey,
     secondary: grey,
   },

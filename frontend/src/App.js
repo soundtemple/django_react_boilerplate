@@ -54,13 +54,6 @@ const App = (props) => {
     }
   };
 
-  const themeChange = () => {
-    theme.palette.type === "light"
-      ? (theme.palette.type = "dark")
-      : (theme.palette.type = "light");
-    console.log(theme.palette.type);
-  };
-
   const [appState, setAppState] = useState({
     user: {
       name: "",
@@ -68,7 +61,6 @@ const App = (props) => {
       username: "",
     },
     updateUser,
-    themeChange,
     classes,
   });
   return (
