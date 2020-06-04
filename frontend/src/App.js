@@ -4,7 +4,6 @@ import AppRouter from "./app/components/app-router";
 import Navigation from "./app/components/navigation";
 import "./App.css";
 import FlashMessage from "./utils/flash-message";
-import clsx from "clsx";
 import AppContext from "./app/components/app-context";
 import { theme, useStyles } from "./app/theme/theme-utils";
 import axios from "./utils/axios-wrapper";
@@ -55,6 +54,13 @@ const App = (props) => {
     }
   };
 
+  const themeChange = () => {
+    theme.palette.type === "light"
+      ? (theme.palette.type = "dark")
+      : (theme.palette.type = "light");
+    console.log(theme.palette.type);
+  };
+
   const [appState, setAppState] = useState({
     user: {
       name: "",
@@ -62,9 +68,8 @@ const App = (props) => {
       username: "",
     },
     updateUser,
-    useStyles,
-    fixedHeightPaper: clsx(classes.paper, classes.fixedHeight),
-    fixedHeightArticles: clsx(classes.paper, classes.articlesHeight),
+    themeChange,
+    classes,
   });
   return (
     <BrowserRouter>

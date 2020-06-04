@@ -1,14 +1,22 @@
 import blueGrey from "@material-ui/core/colors/blueGrey";
+import grey from "@material-ui/core/colors/grey";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 
+// const primary = red[500]; // #F44336
+// const accent = purple['A200']; // #E040FB
+// const accent = purple.A200; // #E040FB (alternative method)
+
 export const theme = createMuiTheme({
   palette: {
-    type: "light",
+    type: "dark",
+    primary: grey,
+    secondary: grey,
   },
 });
 
 const drawerWidth = 240;
+const appBarDarkness = theme.palette.type === "light" ? 50 : 800;
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +34,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: blueGrey[800],
+    backgroundColor: theme.palette.primary[appBarDarkness],
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -86,9 +94,9 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   fixedHeight: {
-    height: 380,
+    height: 580,
   },
   articlesHeight: {
-    height: 300,
+    height: 500,
   },
 }));

@@ -24,27 +24,27 @@ const ToolBar = (props) => {
           drawState && classes.menuButtonHidden
         )}
       >
-        <MenuIcon />
+        <MenuIcon color="primary" />
       </IconButton>
       <Typography
         component="h1"
         variant="h6"
-        color="inherit"
+        color="primary"
         noWrap
         className={classes.title}
       >
         SOUNDTEMPLE
       </Typography>
       <Link to="/notifications">
-        <IconButton color="inherit">
+        <IconButton color="primary">
           <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon />
+            <NotificationsIcon color="primary" />
           </Badge>
         </IconButton>
       </Link>
-      <IconButton color="inherit">
+      <IconButton color="primary">
         <Link to="/account">
-          <PersonIcon />
+          <PersonIcon color="primary" />
         </Link>
       </IconButton>
     </Toolbar>

@@ -12,14 +12,15 @@ import ProductListView from "../../store/components/productList";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import AppContext from "../../app/components/app-context";
+import clsx from "clsx";
 
 const AppRouter = (props) => {
-  const { fixedHeightPaper } = React.useContext(AppContext);
+  const { classes } = React.useContext(AppContext);
   return (
     <main>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper className={fixedHeightPaper}>
+          <Paper className={clsx(classes.paper, classes.fixedHeight)}>
             <Switch>
               <Route path="/" component={HomePage} exact />
               <Route path="/news" component={ArticleListView} />

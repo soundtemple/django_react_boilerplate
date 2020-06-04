@@ -47,9 +47,9 @@ const Navigation = (props) => {
         </div>
         <Divider />
         <Paper elevation={0}>
-          <MenuItemsMain />
+          <MenuItemsMain classes={{}} />
           <Divider />
-          <MenuItemsSecondary />
+          <MenuItemsSecondary classes={{}} />
         </Paper>
         <Divider />
       </Drawer>

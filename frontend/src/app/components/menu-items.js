@@ -1,9 +1,10 @@
 import React from "react";
 import { ListItemLink } from "../theme/list-item-link";
 import List from "@material-ui/core/List";
+import AppContext from "../../app/components/app-context";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
+import PersonIcon from "@material-ui/icons/Person";
 import BallotIcon from "@material-ui/icons/Ballot";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
@@ -16,7 +17,7 @@ export const MenuItemsMain = (props) => {
       <ListItemLink to="/news" primary="News" icon={<BallotIcon />} />
       <ListItemLink to="/music" primary="Music" icon={<BarChartIcon />} />
       <ListItemLink to="/software" primary="Software" icon={<LayersIcon />} />
-      <ListItemLink to="/account" primary="Account" icon={<PeopleIcon />} />
+      <ListItemLink to="/account" primary="Account" icon={<PersonIcon />} />
       <ListItemLink to="/cart" primary="Cart" icon={<ShoppingCartIcon />} />
       <ListItemLink
         to="/contact"
@@ -28,10 +29,10 @@ export const MenuItemsMain = (props) => {
 };
 
 export const MenuItemsSecondary = (props) => {
+  const { themeChange } = React.useContext(AppContext);
   return (
     <List aria-label="secondary">
-      <ListItemLink to="/" primary="Trash" />
-      <ListItemLink to="/" primary="Spam" />
+      <button onClick={() => themeChange()}>theme</button>
     </List>
   );
 };
