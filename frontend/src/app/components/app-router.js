@@ -4,11 +4,11 @@ import Notifications from "../../general/components/notifications";
 import UserAccount from "../../auth/components/user-account";
 import HomePage from "../../general/components/home";
 import ArticleListView from "../../blog/components/articleList";
-import PortfolioListView from "../../collections/components/collectionList";
+import MusicCollection from "../../collections/components/musicCollection";
+import SoftwareCollection from "../../collections/components/softwareCollection";
 import ShoppingCart from "../../store/components/cart";
 import ContactForm from "../../general/components/contact";
 import RoutNoteFound from "../../general/components/route-not-found";
-import ProductListView from "../../store/components/productList";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import AppContext from "../../app/components/app-context";
@@ -24,9 +24,8 @@ const AppRouter = (props) => {
             <Switch>
               <Route path="/" component={HomePage} exact />
               <Route path="/news" component={ArticleListView} />
-              <Route path="/music" component={PortfolioListView} />
-              <Route path="/software" component={PortfolioListView} />
-              <Route path="/shop" component={ProductListView} />
+              <Route path="/music" component={MusicCollection} />
+              <Route path="/software" component={SoftwareCollection} />
               <Route path="/cart" component={ShoppingCart} />
               <Route path="/account" component={UserAccount} />
               <Route path="/notifications" component={Notifications} />
