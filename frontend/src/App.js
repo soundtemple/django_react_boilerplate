@@ -63,6 +63,7 @@ const App = (props) => {
     updateUser,
     classes,
   });
+
   return (
     <BrowserRouter>
       <AppContext.Provider value={appState}>

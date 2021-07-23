@@ -20,44 +20,42 @@ const AppRouter = (props) => {
     <main>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper className={clsx(classes.paper, classes.fixedHeight)}>
-            <Switch>
-              <Route
-                path="/"
-                render={(props) => <HomePage {...props} />}
-                exact
-              />
-              <Route
-                path="/news"
-                render={(props) => <ArticleListView {...props} />}
-              />
-              <Route
-                path="/music"
-                render={(props) => <MusicCollection {...props} />}
-              />
-              <Route
-                path="/software"
-                render={(props) => <SoftwareCollection {...props} />}
-              />
-              <Route
-                path="/cart"
-                render={(props) => <ShoppingCart {...props} />}
-              />
-              <Route
-                path="/account"
-                render={(props) => <UserAccount {...props} />}
-              />
-              <Route
-                path="/notifications"
-                render={(props) => <Notifications {...props} />}
-              />
-              <Route
-                path="/contact"
-                render={(props) => <ContactForm {...props} />}
-              />
-              <Route component={RoutNoteFound} />
-            </Switch>
-          </Paper>
+          <Switch>
+            <Route
+              path="/"
+              render={(props) => <HomePage {...props} />}
+              exact
+            />
+            <Route
+              path="/news"
+              render={(props) => <ArticleListView {...props} />}
+            />
+            <Route
+              path="/music"
+              render={(props) => <MusicCollection {...props} />}
+            />
+            <Route
+              path="/software"
+              render={(props) => <SoftwareCollection {...props} />}
+            />
+            <Route
+              path="/cart"
+              render={(props) => <ShoppingCart {...props} />}
+            />
+            <Route
+              path="/account"
+              render={(props) => <UserAccount {...props} />}
+            />
+            <Route
+              path="/notifications"
+              render={(props) => <Notifications {...props} />}
+            />
+            <Route
+              path="/contact"
+              render={(props) => <ContactForm {...props} />}
+            />
+            <Route component={RoutNoteFound} />
+          </Switch>
         </Grid>
       </Grid>
     </main>
