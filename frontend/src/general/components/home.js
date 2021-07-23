@@ -5,11 +5,9 @@ const HomePage = (props) => {
   const { user } = React.useContext(AppContext);
   return (
     <>
-      <h2>Latest from Soundtemple</h2>
-      <p>Hey {user.username},</p>
-      <p>Some stuff in the news</p>
-      <p>Some new music</p>
-      <p>Some new software</p>
+      <h2>.: SOUNDTEMPLE :.</h2>
+      <p>Hey {user.username || 'welcome'},</p>
+      <p>This is the mantel piece for my tinkerings with music technology.</p>
     </>
   );
 };

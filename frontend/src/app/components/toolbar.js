@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import { Link } from "react-router-dom";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 const ToolBar = (props) => {
   const { classes, onDrawerOpen, drawState } = props;
@@ -33,7 +34,7 @@ const ToolBar = (props) => {
         noWrap
         className={classes.title}
       >
-        SOUNDTEMPLE
+        <span><DashboardIcon /></span>
       </Typography>
       <Link to="/notifications">
         <IconButton color="primary">
